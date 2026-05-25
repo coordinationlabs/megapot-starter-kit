@@ -1,0 +1,66 @@
+
+  ─────────────────────────────────────────────────────────────────────
+   Welcome to the Megapot Starter Kit
+  ─────────────────────────────────────────────────────────────────────
+
+  Your .env was just created from .env.example. Open it and customize
+  these four — listed in order of impact:
+
+
+  1) VITE_REFERRER_ADDRESS — your wallet
+
+     Earns the protocol's referral fee on every ticket purchased and
+     the referral win share on every winning claimed through this app.
+
+     Defaults to a dead address so the kit boots out of the box, but
+     anything earned on the default is unrecoverable. Set this BEFORE
+     you ship.
+
+
+  2) VITE_MEGAPOT_API_KEY — Megapot Data API key
+
+     Mint at: https://megapot.io/dashboard
+
+     Without one, the kit falls back to the anonymous tier
+     (10 req/min, 500/day). With a key: 60/min, 10K/day. The Tickets
+     and History pages will throttle on the anonymous tier under any
+     real traffic.
+
+
+  3) VITE_WALLETCONNECT_PROJECT_ID — wallet-modal project ID
+
+     Get one at: https://cloud.walletconnect.com  (free, ~2 min signup)
+
+     Without it, injected wallets (MetaMask, Coinbase Wallet, browser
+     extensions) still work — but the WalletConnect QR modal that
+     mobile wallets scan won't open.
+
+
+  4) VITE_RPC_URL — strongly recommended even for development
+
+     The default (https://mainnet.base.org) is a public RPC with
+     aggressive rate limits, filter-eviction quirks, and occasional
+     load-balancer-induced stale reads. Symptoms include
+     "filter not found" errors and writes that succeed on chain but
+     don't surface in the UI until refresh.
+
+     Free dedicated endpoints that don't have these issues:
+       • https://www.alchemy.com/base
+       • https://goldsky.com
+       • QuickNode, Infura, Ankr — any HTTPS Base RPC works.
+
+     Pick one, paste it in.
+
+
+  ─────────────────────────────────────────────────────────────────────
+
+  When you're done editing .env, run:
+
+      pnpm dev
+
+  Then open http://localhost:5173 and connect a wallet.
+
+  Full docs: README.md  ·  Rebrand checklist: docs/CUSTOMIZE.md
+  Architecture: docs/ARCHITECTURE.md  ·  Skills: https://llms.megapot.io
+
+  ─────────────────────────────────────────────────────────────────────

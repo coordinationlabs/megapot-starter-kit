@@ -1,0 +1,45 @@
+# dependencies
+node_modules
+
+# build output
+dist
+dist-ssr
+
+# env
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+tsconfig.app.tsbuildinfo
+tsconfig.node.tsbuildinfo
+dist
+
+# local-only working notes
+docs/designs/
+docs/reviews/
+
+# brainstorming visual companion artifacts
+.superpowers/
+
+# Claude Code workspace state (settings, launch configs, hooks)
+.claude/

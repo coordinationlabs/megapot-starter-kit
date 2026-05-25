@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Apply the configured system font stack to the whole app — without this
+     the body falls back to the platform default (Times New Roman on Windows). */
+  html {
+    @apply font-sans antialiased;
+  }
+
+  /* Single, consistent focus ring across every interactive element. Tab through
+     the app and you should always see where focus is. The ring uses
+     `box-shadow`, so each element keeps its native border-radius (pills stay
+     round, cards stay rounded-2xl) — no `rounded-*` override here. */
+  :where(button, a, [role="button"], summary, input, select, textarea):focus-visible {
+    @apply outline-none ring-2 ring-brand-primary-500 ring-offset-2 ring-offset-white dark:ring-offset-zinc-950;
+  }
+}
+
+@layer components {
+  /* The repeating card chrome used across pages — extracted so a fork can
+     restyle every card by editing one place. */
+  .card {
+    @apply rounded-2xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900;
+  }
+  .card-pad {
+    @apply card p-4;
+  }
+  .card-pad-lg {
+    @apply card p-6 shadow-sm;
+  }
+}

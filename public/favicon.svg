@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Generic placeholder mark — swap for your fork's logo. -->
+  <rect width="32" height="32" rx="7" fill="#059669" />
+  <path d="M9 22V10h3.4l3.3 7.2L19 10h3.4v12h-2.4v-7.6l-2.7 5.7h-2L12.6 14.4V22z"
+        fill="#ecfdf5" />
+</svg>
