@@ -1,0 +1,27 @@
+name: Documentation issue
+description: Something in the README, CUSTOMIZE, ARCHITECTURE, AGENTS, or in-source docs is wrong or unclear.
+title: "[Docs]: "
+labels: ["documentation"]
+body:
+  - type: input
+    id: location
+    attributes:
+      label: Which doc or file
+      description: e.g. `README.md`, `docs/CUSTOMIZE.md`, JSDoc on `src/hooks/useJackpotState.ts`.
+    validations:
+      required: true
+
+  - type: textarea
+    id: issue
+    attributes:
+      label: What's wrong or unclear?
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested fix
+      description: Optional — what you think it should say.
+    validations:
+      required: false

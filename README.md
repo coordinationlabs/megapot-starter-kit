@@ -37,9 +37,9 @@ metadata so an agent dropped into the repo orients in one read. See
      [megapot.io/dashboard](https://megapot.io/dashboard); lifts the
      anonymous tier (10/min, 500/day) to the partner tier (60/min,
      10K/day) so Tickets and History don't throttle under traffic
-   - `VITE_WALLETCONNECT_PROJECT_ID` — without it, injected wallets
-     (MetaMask, Coinbase Wallet) still work but the WalletConnect QR
-     modal doesn't
+   - `VITE_WALLETCONNECT_PROJECT_ID` — without it, only browser-extension
+     wallets (MetaMask, Rabby, Brave, etc.) and Coinbase Wallet work; the
+     WalletConnect QR modal, Rainbow, and MetaMask mobile are disabled
 5. `pnpm dev` — http://localhost:5173
 
 The kit logs dev-mode warnings when `VITE_REFERRER_ADDRESS` or
@@ -54,7 +54,7 @@ can't accidentally ship without setting attribution.
 | `VITE_REFERRER_ADDRESS` | Wallet that earns referral fees on every ticket + winning through your app | Defaults to a dead address (`0x…dEaD`); fees earned on it are unrecoverable |
 | `VITE_CHAIN` | `mainnet` or `testnet` | Defaults to `mainnet`; must agree with `VITE_RPC_URL` |
 | `VITE_RPC_URL` | Base / Base Sepolia HTTPS RPC | Defaults to public RPC — rate-limited, fine for local dev only |
-| `VITE_WALLETCONNECT_PROJECT_ID` | WalletConnect Cloud project ID | WalletConnect QR modal breaks; injected wallets still work |
+| `VITE_WALLETCONNECT_PROJECT_ID` | WalletConnect Cloud project ID | WC QR + Rainbow + MetaMask mobile disabled; injected wallets + Coinbase Wallet still work |
 | `VITE_MEGAPOT_API_KEY` | Data API key (browser tier) — [Get a key](https://megapot.io/dashboard) | Empty = anonymous tier (10/min, 500/day) |
 | `VITE_API_BASE_URL` | Override Data API URL — set to `/api/megapot` for the proxy tier | Empty = `https://api.megapot.io/v1` |
 | `VITE_APP_NAME` | Label in wallet-connect modals | Falls back to `"Megapot Starter Kit"` |

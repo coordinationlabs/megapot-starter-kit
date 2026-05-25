@@ -60,8 +60,10 @@ builds stay silent.
 
 ## Wallet provider
 
-The kit ships with RainbowKit (zero-config WalletConnect modal + injected
-detection). Treated as a swappable boundary — only two files know about it.
+The kit ships with RainbowKit. Treated as a swappable boundary — only
+two files know about it. The wallet picker degrades gracefully if
+`VITE_WALLETCONNECT_PROJECT_ID` is empty (injected + Coinbase Wallet
+only; no WC modal, Rainbow, or MetaMask mobile).
 
 - [`src/config/wagmi.ts`](../src/config/wagmi.ts) — the
   `getDefaultConfig` call (chains, transports, projectId, appName).
