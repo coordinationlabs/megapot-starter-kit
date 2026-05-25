@@ -101,10 +101,14 @@ These are choices that ripple beyond their immediate file. Linked from
 
 ### RainbowKit (not ConnectKit, not vanilla wagmi)
 
-Zero-config WalletConnect modal + injected wallet detection in ~5 lines
-of provider setup. The kit treats the wallet provider as a swappable
-boundary — `src/config/wagmi.ts` and the `<RainbowKitProvider>` wrapper
-in `src/main.tsx` are the only two files that know about RainbowKit.
+Full WalletConnect modal + Rainbow + MetaMask mobile when
+`VITE_WALLETCONNECT_PROJECT_ID` is set; injected wallets + Coinbase
+Wallet only when it's empty (the kit hand-builds a WC-free wagmi config
+in that branch — see `src/config/wagmi.ts` for why
+`getDefaultConfig` can't run without a projectId). The kit treats the
+wallet provider as a swappable boundary — `src/config/wagmi.ts` and the
+`<RainbowKitProvider>` wrapper in `src/main.tsx` are the only two files
+that know about RainbowKit.
 Everything downstream uses wagmi's hooks (`useAccount`, `useReadContract`,
 `useWriteContract`, `useWatchContractEvent`) which are vendor-neutral.
 
