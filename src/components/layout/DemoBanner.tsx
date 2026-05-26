@@ -10,6 +10,10 @@
  * ---
  */
 const LINKS = [
+  {
+    label: 'GitHub (this demo)',
+    href: 'https://github.com/coordinationlabs/megapot-starter-kit/tree/demo',
+  },
   { label: 'docs.megapot.io', href: 'https://docs.megapot.io' },
   { label: 'api.megapot.io', href: 'https://api.megapot.io' },
   { label: 'llms.megapot.io', href: 'https://llms.megapot.io' },
@@ -20,7 +24,7 @@ export function DemoBanner() {
     <div className="sticky top-[90px] z-20 border-b border-amber-200/80 bg-amber-50/90 backdrop-blur md:top-[57px] dark:border-amber-900/40 dark:bg-amber-950/40">
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-2 px-4 py-2 text-center sm:flex-row sm:justify-between sm:text-left">
         <p className="text-xs font-medium text-amber-900 dark:text-amber-200 sm:text-sm">
-          Demo mode · Read-only showcase · Wired up to real Megapot contracts
+          Developer demo — wired up to the Megapot Data API &amp; production contracts
         </p>
         <div className="flex flex-wrap items-center justify-center gap-1.5">
           {LINKS.map((link) => (
