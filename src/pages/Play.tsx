@@ -18,6 +18,7 @@ import {
   JACKPOT_AUTO_SUBSCRIPTION_ADDRESS,
 } from '@/config/contracts';
 import { COPY } from '@/config/copy';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { API_BASE_URL, QK } from '@/lib/api';
 import { pickPurchaseRoute, totalCost as computeTotalCost, type CustomTicket } from '@/lib/tickets';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
@@ -232,7 +233,8 @@ export function Play() {
                 variant="primary"
                 size="md"
                 onClick={onSubmit}
-                disabled={buyDisabled || activeWrite.isPending || confirmed}
+                disabled={DEMO_MODE || buyDisabled || activeWrite.isPending || confirmed}
+                title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
                 className="w-full"
               >
                 {activeWrite.isWaitingSignature

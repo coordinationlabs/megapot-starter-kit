@@ -9,6 +9,7 @@
  */
 import type { ReactNode } from 'react';
 import { useState } from 'react';
+import { DemoAutoConnect } from '@/components/layout/DemoAutoConnect';
 import { Layout } from '@/components/layout/Layout';
 import type { NavKey } from '@/components/layout/Nav';
 import { LP_ENABLED } from '@/config/contracts';
@@ -44,8 +45,11 @@ export default function App() {
   }
 
   return (
-    <Layout active={active} onSelect={setActive}>
-      {page}
-    </Layout>
+    <>
+      <DemoAutoConnect />
+      <Layout active={active} onSelect={setActive}>
+        {page}
+      </Layout>
+    </>
   );
 }

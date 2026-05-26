@@ -1,26 +1,17 @@
 /**
  * ---
  * @skill      https://llms.megapot.io/tasks/read-state
- * @customize  Two header slots (md+ only — `MobileWalletBar` owns the
- *             equivalent surface below md, matching where `Nav` flips to
- *             a bottom tab bar):
- *               - balance pill (ETH + USDC) when connected — single source of
- *                 wallet liquidity readout, no modal needed.
- *               - <WalletButton /> renders a minimal Connect / Disconnect /
- *                 Wrong-network button via `ConnectButton.Custom` — dropping
- *                 RainbowKit's account modal because the balance pill already
- *                 covers the only data it surfaced.
+ * @customize  Demo-branch version. Drops the Connect/Disconnect button
+ *             (auto-connect makes it unreachable in either direction) and
+ *             replaces it with a static "Demo" indicator so the
+ *             demo-mode state is explicit at the top-right.
  *
- *             To reinstate the full RainbowKit dropdown, swap `<WalletButton />`
- *             for `<ConnectButton />`. If you want the desktop surface on mobile
- *             too, drop the outer `hidden sm:flex` and remove `MobileWalletBar`
- *             from `Layout.tsx`.
+ *             Balance pill (address + ETH + USDC) stays — surfaces the
+ *             demo wallet's real liquidity readout.
  * ---
  */
-import { useAccount, useBalance, useDisconnect } from 'wagmi';
 import { formatUnits } from 'viem';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { Button } from '@/components/common/Button';
+import { useAccount, useBalance } from 'wagmi';
 import { CopyButton } from '@/components/common/CopyButton';
 import { USDC_DECIMALS } from '@/config/contracts';
 import { useUsdcBalance } from '@/hooks/useUsdcBalance';
@@ -42,8 +33,6 @@ export function ProfileCard() {
     query: { enabled: isConnected },
   });
 
-  // Balance-only mode (no `spender`) — single source of USDC liquidity
-  // matches the approval path in <ApprovalButton>.
   const { balance: usdcBalance } = useUsdcBalance(address);
 
   return (
@@ -69,56 +58,15 @@ export function ProfileCard() {
           </span>
         </div>
       )}
-      <WalletButton />
+      <DemoPill />
     </div>
   );
 }
 
-/**
- * Minimal connect / disconnect surface. RainbowKit's default <ConnectButton />
- * renders chain selector + balance + address dropdown — we already show
- * balances in the header and don't want a chain switcher in the demo, so
- * collapse to one button per state.
- */
-function WalletButton() {
-  const { disconnect } = useDisconnect();
-
+function DemoPill() {
   return (
-    <ConnectButton.Custom>
-      {({ account, chain, openConnectModal, openChainModal, mounted }) => {
-        // `mounted` flips true after RainbowKit has hydrated — until then we
-        // can't know whether a session exists, so render nothing.
-        if (!mounted) return null;
-
-        if (!account || !chain) {
-          return (
-            <Button variant="primary" size="sm" onClick={openConnectModal} className="px-3 py-1.5">
-              Connect
-            </Button>
-          );
-        }
-
-        if (chain.unsupported) {
-          return (
-            <Button variant="danger" size="sm" onClick={openChainModal} className="px-3 py-1.5">
-              Wrong network
-            </Button>
-          );
-        }
-
-        // Disconnect uses a quieter outline style (not destructive — just an idle exit
-        // affordance), kept inline because none of the three Button variants match.
-        return (
-          <button
-            type="button"
-            onClick={() => disconnect()}
-            className="rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:bg-zinc-800"
-            title={account.address}
-          >
-            Disconnect
-          </button>
-        );
-      }}
-    </ConnectButton.Custom>
+    <span className="rounded-full border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-900 dark:border-amber-800 dark:bg-amber-950/40 dark:text-amber-200">
+      Demo
+    </span>
   );
 }

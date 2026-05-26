@@ -11,6 +11,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { parseUnits } from 'viem';
 import { useAccount } from 'wagmi';
 import { JACKPOT_ADDRESS, USDC_DECIMALS } from '@/config/contracts';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { ApprovalButton } from '@/components/common/ApprovalButton';
 import { Button } from '@/components/common/Button';
 import { TxStatus } from '@/components/common/TxStatus';
@@ -129,7 +130,8 @@ export function DepositForm({
           variant="primary"
           size="md"
           onClick={() => amount && deposit.deposit(amount)}
-          disabled={submitDisabled || flashing}
+          disabled={DEMO_MODE || submitDisabled || flashing}
+          title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
           className="w-full"
         >
           {deposit.isWaitingSignature

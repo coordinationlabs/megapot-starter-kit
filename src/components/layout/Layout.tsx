@@ -16,6 +16,7 @@
 import type { ReactNode } from 'react';
 import { COPY } from '@/config/copy';
 import { BrandMark } from './BrandMark';
+import { DemoBanner } from './DemoBanner';
 import { Footer } from './Footer';
 import { MobileWalletBar } from './MobileWalletBar';
 import { MobileBottomNav, Nav, type NavKey } from './Nav';
@@ -49,6 +50,7 @@ export function Layout({
         </div>
         <MobileWalletBar />
       </header>
+      <DemoBanner />
       <main className="mx-auto max-w-5xl px-4 pt-6 pb-6">{children}</main>
       <Footer />
       <MobileBottomNav active={active} onSelect={onSelect} />

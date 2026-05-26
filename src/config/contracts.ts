@@ -70,7 +70,7 @@ export const TICKET_SOURCE = stringToHex('megapot-starter-kit', { size: 32 });
  * build-time tree-shake. A fork that wants the bundle reduction can swap
  * `src/App.tsx`'s LP import to `React.lazy` and wrap the case in `<Suspense>`.
  */
-export const LP_ENABLED = false;
+export const LP_ENABLED = true;
 
 /**
  * Referral split weights — must sum to 1e18 (= 100%). Single referrer = `[1e18]`.

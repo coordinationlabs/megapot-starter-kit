@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import { Button } from '@/components/common/Button';
 import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { TxStatus } from '@/components/common/TxStatus';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
 import { useSubscribe } from '@/hooks/useSubscribe';
 
@@ -59,7 +60,8 @@ export function ActiveSubscription() {
         variant="danger"
         size="sm"
         onClick={sub.cancelSubscription}
-        disabled={sub.cancel.isPending || flashing}
+        disabled={DEMO_MODE || sub.cancel.isPending || flashing}
+        title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
         className="w-full"
       >
         {sub.cancel.isWaitingSignature

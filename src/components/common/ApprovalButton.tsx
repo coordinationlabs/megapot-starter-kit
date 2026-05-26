@@ -32,6 +32,7 @@ import { useEffect, useRef } from 'react';
 import { erc20Abi } from 'viem';
 import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
 import { USDC_ADDRESS } from '@/config/contracts';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { Button } from './Button';
 import { UsdcAmount } from './UsdcAmount';
 import { useUsdcAllowance } from '@/hooks/useUsdcAllowance';
@@ -95,7 +96,8 @@ export function ApprovalButton({
         variant="primary"
         size="md"
         onClick={onClick}
-        disabled={busy}
+        disabled={DEMO_MODE || busy}
+        title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
         className="w-full"
       >
         {isPending ? (

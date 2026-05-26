@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Button } from '@/components/common/Button';
 import { TxStatus } from '@/components/common/TxStatus';
 import { UsdcAmount } from '@/components/common/UsdcAmount';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
 import { useJackpotState } from '@/hooks/useJackpotState';
 import type { LpInfo } from '@/hooks/useLpInfo';
@@ -109,7 +110,8 @@ export function WithdrawTwoStep({
             variant="primary"
             size="sm"
             onClick={finalizeWithdraw}
-            disabled={!finalizeReady || finalize.isPending || finalizeFlash}
+            disabled={DEMO_MODE || !finalizeReady || finalize.isPending || finalizeFlash}
+            title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
             className="w-full"
           >
             {finalize.isWaitingSignature
@@ -160,11 +162,13 @@ export function WithdrawTwoStep({
             size="sm"
             onClick={() => initiateWithdraw(sharesToWithdraw)}
             disabled={
+              DEMO_MODE ||
               totalShares === 0n ||
               sharesToWithdraw === 0n ||
               initiate.isPending ||
               initiateFlash
             }
+            title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
             className="w-full"
           >
             {initiate.isWaitingSignature

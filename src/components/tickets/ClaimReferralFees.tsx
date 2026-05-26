@@ -12,6 +12,7 @@ import { useEffect } from 'react';
 import { Button } from '@/components/common/Button';
 import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { TxStatus } from '@/components/common/TxStatus';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { useClaimReferralFees } from '@/hooks/useClaimReferralFees';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
 
@@ -47,7 +48,8 @@ export function ClaimReferralFees() {
         variant="primary"
         size="sm"
         onClick={fees.claim}
-        disabled={fees.isPending || flashing || !fees.hasEarnings}
+        disabled={DEMO_MODE || fees.isPending || flashing || !fees.hasEarnings}
+        title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
         className="w-full"
       >
         {fees.isWaitingSignature

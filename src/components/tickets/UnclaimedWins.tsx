@@ -43,6 +43,7 @@ import { DataApiCredit } from '@/components/common/DataApiCredit';
 import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { TxStatus } from '@/components/common/TxStatus';
 import { COPY } from '@/config/copy';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { TicketCard } from '@/components/tickets/TicketCard';
 import { useClaimWinnings } from '@/hooks/useClaimWinnings';
 import { useRound } from '@/hooks/useRound';
@@ -180,7 +181,8 @@ function UnclaimedRoundRow({ row, onClaimed }: { row: WinsByRound; onClaimed: ()
           variant="primary"
           size="sm"
           onClick={() => claim.claim(unclaimedTicketIds)}
-          disabled={claim.isPending}
+          disabled={DEMO_MODE || claim.isPending}
+          title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
           className="w-full"
         >
           {claim.isWaitingSignature ? (
