@@ -10,6 +10,10 @@
  * ---
  */
 const LINKS = [
+  {
+    label: 'GitHub (this demo)',
+    href: 'https://github.com/coordinationlabs/megapot-starter-kit/tree/demo',
+  },
   { label: 'docs.megapot.io', href: 'https://docs.megapot.io' },
   { label: 'api.megapot.io', href: 'https://api.megapot.io' },
   { label: 'llms.megapot.io', href: 'https://llms.megapot.io' },
