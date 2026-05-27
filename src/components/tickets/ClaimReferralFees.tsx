@@ -52,13 +52,15 @@ export function ClaimReferralFees() {
         title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
         className="w-full"
       >
-        {fees.isWaitingSignature
-          ? 'Sign in your wallet…'
-          : fees.isMining
-            ? 'Confirming on-chain…'
-            : flashing
-              ? '✓ Claimed!'
-              : 'Claim earnings'}
+        {DEMO_MODE
+          ? 'Claiming disabled in demo'
+          : fees.isWaitingSignature
+            ? 'Sign in your wallet…'
+            : fees.isMining
+              ? 'Confirming on-chain…'
+              : flashing
+                ? '✓ Claimed!'
+                : 'Claim earnings'}
       </Button>
       <TxStatus
         hash={fees.txHash}

@@ -114,13 +114,15 @@ export function WithdrawTwoStep({
             title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
             className="w-full"
           >
-            {finalize.isWaitingSignature
-              ? 'Sign in your wallet…'
-              : finalize.isMining
-                ? 'Confirming on-chain…'
-                : finalizeFlash
-                  ? '✓ Withdrawn!'
-                  : 'Finalize withdrawal'}
+            {DEMO_MODE
+              ? 'Withdrawals disabled in demo'
+              : finalize.isWaitingSignature
+                ? 'Sign in your wallet…'
+                : finalize.isMining
+                  ? 'Confirming on-chain…'
+                  : finalizeFlash
+                    ? '✓ Withdrawn!'
+                    : 'Finalize withdrawal'}
           </Button>
           <TxStatus
             hash={finalize.txHash}
@@ -171,13 +173,15 @@ export function WithdrawTwoStep({
             title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
             className="w-full"
           >
-            {initiate.isWaitingSignature
-              ? 'Sign in your wallet…'
-              : initiate.isMining
-                ? 'Confirming on-chain…'
-                : initiateFlash
-                  ? '✓ Initiated'
-                  : 'Initiate withdrawal'}
+            {DEMO_MODE
+              ? 'Withdrawals disabled in demo'
+              : initiate.isWaitingSignature
+                ? 'Sign in your wallet…'
+                : initiate.isMining
+                  ? 'Confirming on-chain…'
+                  : initiateFlash
+                    ? '✓ Initiated'
+                    : 'Initiate withdrawal'}
           </Button>
           <TxStatus
             hash={initiate.txHash}

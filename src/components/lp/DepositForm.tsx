@@ -134,13 +134,15 @@ export function DepositForm({
           title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
           className="w-full"
         >
-          {deposit.isWaitingSignature
-            ? 'Sign in your wallet…'
-            : deposit.isMining
-              ? 'Confirming on-chain…'
-              : flashing
-                ? '✓ Deposited!'
-                : 'Deposit'}
+          {DEMO_MODE
+            ? 'Deposits disabled in demo'
+            : deposit.isWaitingSignature
+              ? 'Sign in your wallet…'
+              : deposit.isMining
+                ? 'Confirming on-chain…'
+                : flashing
+                  ? '✓ Deposited!'
+                  : 'Deposit'}
         </Button>
       </ApprovalButton>
 
