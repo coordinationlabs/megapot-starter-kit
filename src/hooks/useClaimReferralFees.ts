@@ -10,7 +10,7 @@
  * ---
  */
 import { parseAbi } from 'viem';
-import { useAccount, useReadContract, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useReadContract, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import { JACKPOT_ADDRESS } from '@/config/contracts';
 
 const abi = parseAbi([

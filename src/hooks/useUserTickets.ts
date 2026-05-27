@@ -16,7 +16,7 @@
  * ---
  */
 import { useQuery } from '@tanstack/react-query';
-import { api, API_BASE_URL, apiQueryRetry, QK, type Ticket } from '@/lib/api';
+import { API_BASE_URL, api, apiQueryRetry, QK, type Ticket } from '@/lib/api';
 
 const ONE_MINUTE = 60 * 1000;
 

@@ -11,7 +11,7 @@
  * ---
  */
 import { parseAbi } from 'viem';
-import { useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import { JACKPOT_ADDRESS } from '@/config/contracts';
 
 const abi = parseAbi([

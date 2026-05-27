@@ -11,8 +11,9 @@
  *             inside the `if (error)` branch below.
  * ---
  */
-import { EXPLORER_TX_URL } from '@/config/contracts';
+
 import { ExternalLinkIcon } from '@/components/icons/ExternalLinkIcon';
+import { EXPLORER_TX_URL } from '@/config/contracts';
 
 type Variant = 'pending' | 'success' | 'error';
 

@@ -10,8 +10,8 @@
  */
 import { useEffect } from 'react';
 import { Button } from '@/components/common/Button';
-import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { TxStatus } from '@/components/common/TxStatus';
+import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { useClaimReferralFees } from '@/hooks/useClaimReferralFees';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
 
