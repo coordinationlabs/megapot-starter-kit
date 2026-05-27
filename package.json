@@ -1,7 +1,7 @@
 {
   "name": "megapot-starter-kit",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Forkable, white-label reference frontend for the Megapot on-chain lottery (USDC on Base).",
   "scripts": {

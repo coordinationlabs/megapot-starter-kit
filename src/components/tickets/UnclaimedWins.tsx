@@ -185,7 +185,9 @@ function UnclaimedRoundRow({ row, onClaimed }: { row: WinsByRound; onClaimed: ()
           title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
           className="w-full"
         >
-          {claim.isWaitingSignature ? (
+          {DEMO_MODE ? (
+            'Claiming disabled in demo'
+          ) : claim.isWaitingSignature ? (
             'Sign in your wallet…'
           ) : claim.isMining ? (
             'Confirming on-chain…'

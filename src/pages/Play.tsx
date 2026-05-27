@@ -160,6 +160,12 @@ export function Play() {
 
   return (
     <div className="space-y-4">
+      {DEMO_MODE && (
+        <div className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-100">
+          Read-only demo — ticket purchases are disabled. Fork the kit to enable buying.
+        </div>
+      )}
+
       {!isConnected && (
         <div className="rounded-lg border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-900 dark:border-amber-900 dark:bg-amber-950 dark:text-amber-100">
           {COPY.connectToBuy}
@@ -237,19 +243,21 @@ export function Play() {
                 title={DEMO_MODE ? 'Demo mode — disabled' : undefined}
                 className="w-full"
               >
-                {activeWrite.isWaitingSignature
-                  ? 'Sign in your wallet…'
-                  : activeWrite.isMining
-                    ? 'Confirming on-chain…'
-                    : confirmed
-                      ? route === 'subscribe'
-                        ? '✓ Subscribed!'
-                        : '✓ Bought!'
-                      : route === 'jackpot'
-                        ? `Buy ${count} ${count === 1 ? 'ticket' : 'tickets'}`
-                        : route === 'bulk'
-                          ? `Buy ${count} tickets in a batch`
-                          : `Subscribe — ${count} ${count === 1 ? 'ticket' : 'tickets'} per drawing for ${totalDays} ${totalDays === 1 ? 'drawing' : 'drawings'}`}
+                {DEMO_MODE
+                  ? 'Purchases disabled in this demo'
+                  : activeWrite.isWaitingSignature
+                    ? 'Sign in your wallet…'
+                    : activeWrite.isMining
+                      ? 'Confirming on-chain…'
+                      : confirmed
+                        ? route === 'subscribe'
+                          ? '✓ Subscribed!'
+                          : '✓ Bought!'
+                        : route === 'jackpot'
+                          ? `Buy ${count} ${count === 1 ? 'ticket' : 'tickets'}`
+                          : route === 'bulk'
+                            ? `Buy ${count} tickets in a batch`
+                            : `Subscribe — ${count} ${count === 1 ? 'ticket' : 'tickets'} per drawing for ${totalDays} ${totalDays === 1 ? 'drawing' : 'drawings'}`}
               </Button>
             </ApprovalButton>
 
