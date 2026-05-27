@@ -10,12 +10,12 @@
 import { useEffect, useMemo, useState } from 'react';
 import { parseUnits } from 'viem';
 import { useAccount } from 'wagmi';
-import { JACKPOT_ADDRESS, USDC_DECIMALS } from '@/config/contracts';
-import { DEMO_MODE } from '@/config/demoConnector';
 import { ApprovalButton } from '@/components/common/ApprovalButton';
 import { Button } from '@/components/common/Button';
 import { TxStatus } from '@/components/common/TxStatus';
 import { UsdcAmount } from '@/components/common/UsdcAmount';
+import { JACKPOT_ADDRESS, USDC_DECIMALS } from '@/config/contracts';
+import { DEMO_MODE } from '@/config/demoConnector';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
 import { useLpDeposit } from '@/hooks/useLpDeposit';
 import { useUsdcBalance } from '@/hooks/useUsdcBalance';

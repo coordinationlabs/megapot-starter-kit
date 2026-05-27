@@ -13,7 +13,7 @@
  *             wallet's real on-chain state.
  * ---
  */
-import { type Address } from 'viem';
+import type { Address } from 'viem';
 import { createConnector } from 'wagmi';
 
 /**

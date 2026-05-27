@@ -31,8 +31,8 @@
 import { useMemo } from 'react';
 import { parseAbi } from 'viem';
 import { useReadContract } from 'wagmi';
-import { PAYOUT_CALCULATOR_ADDRESS } from '@/config/contracts';
 import type { TierRow } from '@/components/lottery/PrizeTiers';
+import { PAYOUT_CALCULATOR_ADDRESS } from '@/config/contracts';
 
 const abi = parseAbi([
   'function getExpectedDrawingTierPayouts(uint256 _drawingId, uint256 _prizePool, uint8 _normalMax, uint8 _bonusballMax) view returns (uint256[12] drawingTierPayouts)',

@@ -17,7 +17,7 @@
  * ---
  */
 import { useQuery } from '@tanstack/react-query';
-import { api, API_BASE_URL, apiQueryRetry, QK } from '@/lib/api';
+import { API_BASE_URL, api, apiQueryRetry, QK } from '@/lib/api';
 
 export function useRound(roundId: string | undefined) {
   return useQuery({

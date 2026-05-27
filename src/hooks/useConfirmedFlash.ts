@@ -17,11 +17,7 @@
  */
 import { useEffect, useState } from 'react';
 
-export function useConfirmedFlash(
-  isSuccess: boolean,
-  reset: () => void,
-  delayMs = 2000,
-) {
+export function useConfirmedFlash(isSuccess: boolean, reset: () => void, delayMs = 2000) {
   const [flashing, setFlashing] = useState(false);
   useEffect(() => {
     if (!isSuccess) return;

@@ -14,9 +14,9 @@
  */
 import { Button } from '@/components/common/Button';
 import type { NavKey } from '@/components/layout/Nav';
+import { Countdown } from '@/components/lottery/Countdown';
 import { LifecycleStatus } from '@/components/lottery/LifecycleStatus';
 import { PrizePool } from '@/components/lottery/PrizePool';
-import { Countdown } from '@/components/lottery/Countdown';
 import { PrizeTiers } from '@/components/lottery/PrizeTiers';
 import { useActiveRound } from '@/hooks/useActiveRound';
 import { useJackpotState } from '@/hooks/useJackpotState';
@@ -44,10 +44,9 @@ export function Home({ onNavigate }: { onNavigate: (k: NavKey) => void }) {
   const tiersFootnote =
     referralPct !== undefined ? (
       <>
-        Net of the{' '}
-        <span className="font-medium">{referralPct.toFixed(1)}%</span> referral fee paid to
-        the referring app — what a winner actually receives. Gross contract values are higher
-        by this share; see{' '}
+        Net of the <span className="font-medium">{referralPct.toFixed(1)}%</span> referral fee paid
+        to the referring app — what a winner actually receives. Gross contract values are higher by
+        this share; see{' '}
         <a
           href="https://llms.megapot.io/tasks/claim-referral-fees"
           target="_blank"
@@ -69,10 +68,7 @@ export function Home({ onNavigate }: { onNavigate: (k: NavKey) => void }) {
     <div className="space-y-4">
       <LifecycleStatus phase={phase} drawingId={drawingId} />
 
-      <section
-        className="grid grid-cols-2 gap-2 sm:gap-3"
-        aria-label="This round stats"
-      >
+      <section className="grid grid-cols-2 gap-2 sm:gap-3" aria-label="This round stats">
         <Stat label="Tickets sold" value={ticketsSold?.toLocaleString()} />
         <Stat label="Players" value={uniquePlayers?.toLocaleString()} />
       </section>

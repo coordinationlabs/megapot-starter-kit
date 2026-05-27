@@ -30,12 +30,12 @@
 import type { ReactNode } from 'react';
 import { useEffect, useRef } from 'react';
 import { erc20Abi } from 'viem';
-import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import { USDC_ADDRESS } from '@/config/contracts';
 import { DEMO_MODE } from '@/config/demoConnector';
+import { useUsdcAllowance } from '@/hooks/useUsdcAllowance';
 import { Button } from './Button';
 import { UsdcAmount } from './UsdcAmount';
-import { useUsdcAllowance } from '@/hooks/useUsdcAllowance';
 
 export function ApprovalButton({
   spender,
@@ -75,8 +75,7 @@ export function ApprovalButton({
 
   // We only swap to the Approve CTA when we KNOW the allowance is short.
   // Undefined allowance (loading, no wallet, or amount = 0) → fall through.
-  const needsApproval =
-    !!address && amount > 0n && allowance !== undefined && allowance < amount;
+  const needsApproval = !!address && amount > 0n && allowance !== undefined && allowance < amount;
 
   if (!needsApproval) return <>{children}</>;
 

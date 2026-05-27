@@ -15,11 +15,11 @@
  * ---
  */
 import { parseAbi } from 'viem';
-import { useAccount, useWriteContract, useWaitForTransactionReceipt } from 'wagmi';
+import { useAccount, useWaitForTransactionReceipt, useWriteContract } from 'wagmi';
 import {
   JACKPOT_ADDRESS,
-  REFERRER_ADDRESS,
   REFERRAL_SPLIT_FULL,
+  REFERRER_ADDRESS,
   TICKET_SOURCE,
 } from '@/config/contracts';
 import { type CustomTicket, randomTicket } from '@/lib/tickets';

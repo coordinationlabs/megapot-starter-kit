@@ -17,9 +17,10 @@
  *             honored — see `apiQueryRetry`.
  * ---
  */
-import { useMemo } from 'react';
+
 import { useInfiniteQuery } from '@tanstack/react-query';
-import { api, API_BASE_URL, apiQueryRetry, QK, type Win } from '@/lib/api';
+import { useMemo } from 'react';
+import { API_BASE_URL, api, apiQueryRetry, QK, type Win } from '@/lib/api';
 
 const ONE_MINUTE = 60 * 1000;
 

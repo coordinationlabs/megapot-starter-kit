@@ -24,9 +24,9 @@
  */
 import { useState } from 'react';
 import { useAccount } from 'wagmi';
-import { TicketCard } from '@/components/tickets/TicketCard';
 import { DataApiCredit } from '@/components/common/DataApiCredit';
 import { UsdcAmount } from '@/components/common/UsdcAmount';
+import { TicketCard } from '@/components/tickets/TicketCard';
 import { useJackpotState } from '@/hooks/useJackpotState';
 import { useRound } from '@/hooks/useRound';
 import { useWalletTickets, type WalletTicketsByRound } from '@/hooks/useWalletTickets';
@@ -130,8 +130,7 @@ function PastRoundDetail({ roundId, tickets }: { roundId: string; tickets: Ticke
           t.matched_normals !== null
             ? t.matched_normals * 2 + (t.bonusball_match ? 1 : 0)
             : undefined;
-        const winnings =
-          t.winnings_amount !== null ? BigInt(t.winnings_amount.amount) : undefined;
+        const winnings = t.winnings_amount !== null ? BigInt(t.winnings_amount.amount) : undefined;
         const isWinner = winnings !== undefined && winnings > 0n;
         const claimable = !t.claimed && isWinner;
         return (
