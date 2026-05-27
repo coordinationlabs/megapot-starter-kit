@@ -21,10 +21,10 @@
  * desktop, both visible at a glance.
  */
 import type { ReactNode } from 'react';
-import { PlayIcon } from '@/components/icons/PlayIcon';
 import { HistoryIcon } from '@/components/icons/HistoryIcon';
 import { HomeIcon } from '@/components/icons/HomeIcon';
 import { LpIcon } from '@/components/icons/LpIcon';
+import { PlayIcon } from '@/components/icons/PlayIcon';
 import { TicketsIcon } from '@/components/icons/TicketsIcon';
 import { LP_ENABLED } from '@/config/contracts';
 

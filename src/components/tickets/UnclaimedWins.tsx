@@ -40,10 +40,10 @@ import { useEffect } from 'react';
 import { useAccount } from 'wagmi';
 import { Button } from '@/components/common/Button';
 import { DataApiCredit } from '@/components/common/DataApiCredit';
-import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { TxStatus } from '@/components/common/TxStatus';
-import { COPY } from '@/config/copy';
+import { UsdcAmount } from '@/components/common/UsdcAmount';
 import { TicketCard } from '@/components/tickets/TicketCard';
+import { COPY } from '@/config/copy';
 import { useClaimWinnings } from '@/hooks/useClaimWinnings';
 import { useRound } from '@/hooks/useRound';
 import { useWalletWins, type WinsByRound } from '@/hooks/useWalletWins';
@@ -196,8 +196,8 @@ function UnclaimedRoundRow({ row, onClaimed }: { row: WinsByRound; onClaimed: ()
         </Button>
         {overCap && !claim.isPending && (
           <p className="text-center text-[11px] text-zinc-500">
-            {remainingAfterClaim} more {remainingAfterClaim === 1 ? 'win' : 'wins'} after this
-            batch — claim again once the first batch confirms.
+            {remainingAfterClaim} more {remainingAfterClaim === 1 ? 'win' : 'wins'} after this batch
+            — claim again once the first batch confirms.
           </p>
         )}
         <TxStatus

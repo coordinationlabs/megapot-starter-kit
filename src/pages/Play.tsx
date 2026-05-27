@@ -9,30 +9,31 @@
  *             target.
  * ---
  */
+
+import { useQueryClient } from '@tanstack/react-query';
 import { useEffect, useMemo, useState } from 'react';
 import { useAccount } from 'wagmi';
-import { useQueryClient } from '@tanstack/react-query';
+import { ApprovalButton } from '@/components/common/ApprovalButton';
+import { Button } from '@/components/common/Button';
+import { TxStatus } from '@/components/common/TxStatus';
+import { UsdcAmount } from '@/components/common/UsdcAmount';
+import { BulkProgress } from '@/components/lottery/BulkProgress';
+import { type BuyMode, SubscriptionToggle } from '@/components/lottery/SubscriptionToggle';
+import { TicketBuilder } from '@/components/lottery/TicketBuilder';
+import { ActiveSubscription } from '@/components/tickets/ActiveSubscription';
 import {
   BATCH_PURCHASE_FACILITATOR_ADDRESS,
   JACKPOT_ADDRESS,
   JACKPOT_AUTO_SUBSCRIPTION_ADDRESS,
 } from '@/config/contracts';
 import { COPY } from '@/config/copy';
-import { API_BASE_URL, QK } from '@/lib/api';
-import { pickPurchaseRoute, totalCost as computeTotalCost, type CustomTicket } from '@/lib/tickets';
+import { useBulkPurchase } from '@/hooks/useBulkPurchase';
+import { useBuyTickets } from '@/hooks/useBuyTickets';
 import { useConfirmedFlash } from '@/hooks/useConfirmedFlash';
 import { useJackpotState } from '@/hooks/useJackpotState';
-import { useBuyTickets } from '@/hooks/useBuyTickets';
-import { useBulkPurchase } from '@/hooks/useBulkPurchase';
 import { useSubscribe } from '@/hooks/useSubscribe';
-import { ApprovalButton } from '@/components/common/ApprovalButton';
-import { Button } from '@/components/common/Button';
-import { TxStatus } from '@/components/common/TxStatus';
-import { UsdcAmount } from '@/components/common/UsdcAmount';
-import { SubscriptionToggle, type BuyMode } from '@/components/lottery/SubscriptionToggle';
-import { TicketBuilder } from '@/components/lottery/TicketBuilder';
-import { BulkProgress } from '@/components/lottery/BulkProgress';
-import { ActiveSubscription } from '@/components/tickets/ActiveSubscription';
+import { API_BASE_URL, QK } from '@/lib/api';
+import { type CustomTicket, totalCost as computeTotalCost, pickPurchaseRoute } from '@/lib/tickets';
 
 export function Play() {
   const { isConnected } = useAccount();

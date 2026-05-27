@@ -160,10 +160,7 @@ export function WithdrawTwoStep({
             size="sm"
             onClick={() => initiateWithdraw(sharesToWithdraw)}
             disabled={
-              totalShares === 0n ||
-              sharesToWithdraw === 0n ||
-              initiate.isPending ||
-              initiateFlash
+              totalShares === 0n || sharesToWithdraw === 0n || initiate.isPending || initiateFlash
             }
             className="w-full"
           >

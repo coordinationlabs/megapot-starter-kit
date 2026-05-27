@@ -17,9 +17,10 @@
  *             from `Layout.tsx`.
  * ---
  */
-import { useAccount, useBalance, useDisconnect } from 'wagmi';
-import { formatUnits } from 'viem';
+
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { formatUnits } from 'viem';
+import { useAccount, useBalance, useDisconnect } from 'wagmi';
 import { Button } from '@/components/common/Button';
 import { CopyButton } from '@/components/common/CopyButton';
 import { USDC_DECIMALS } from '@/config/contracts';

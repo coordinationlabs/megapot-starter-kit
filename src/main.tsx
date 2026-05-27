@@ -5,15 +5,16 @@
  *             RainbowKitProvider. RainbowKit's CSS import is required.
  * ---
  */
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { WagmiProvider } from 'wagmi';
-import { hashFn } from 'wagmi/query';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 // RainbowKit (not ConnectKit or vanilla wagmi): zero-config WalletConnect
 // modal + injected detection in ~5 lines. Swap is two files — wagmi.ts and
 // this provider wrapper. See docs/CUSTOMIZE.md § "Wallet provider".
 import { RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { WagmiProvider } from 'wagmi';
+import { hashFn } from 'wagmi/query';
 import '@rainbow-me/rainbowkit/styles.css';
 
 import App from './App';
