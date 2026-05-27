@@ -13,7 +13,6 @@
  * ---
  */
 import { Button } from '@/components/common/Button';
-import { UsdcAmount } from '@/components/common/UsdcAmount';
 import type { NavKey } from '@/components/layout/Nav';
 import { LifecycleStatus } from '@/components/lottery/LifecycleStatus';
 import { PrizePool } from '@/components/lottery/PrizePool';
@@ -45,10 +44,10 @@ export function Home({ onNavigate }: { onNavigate: (k: NavKey) => void }) {
   const tiersFootnote =
     referralPct !== undefined ? (
       <>
-        Shown after the protocol's{' '}
-        <span className="font-medium">{referralPct.toFixed(1)}%</span> referral share is
-        deducted — what a winner actually receives. Raw contract values are higher by this
-        share; see{' '}
+        Net of the{' '}
+        <span className="font-medium">{referralPct.toFixed(1)}%</span> referral fee paid to
+        the referring app — what a winner actually receives. Gross contract values are higher
+        by this share; see{' '}
         <a
           href="https://llms.megapot.io/tasks/claim-referral-fees"
           target="_blank"
@@ -61,29 +60,21 @@ export function Home({ onNavigate }: { onNavigate: (k: NavKey) => void }) {
       </>
     ) : null;
 
-  // Tickets sold comes from chain (real-time, no indexer lag); players + LP
-  // accumulated yield come from the API (indexer-computed, refreshed every 30s).
+  // Tickets sold comes from chain (real-time, no indexer lag); players come
+  // from the API (indexer-computed, refreshed every 30s).
   const ticketsSold = state?.globalTicketsBought;
   const uniquePlayers = activeRound.data?.unique_participants;
-  const lpEarnings =
-    activeRound.data?.lp_earnings?.amount !== undefined
-      ? BigInt(activeRound.data.lp_earnings.amount)
-      : undefined;
 
   return (
     <div className="space-y-4">
       <LifecycleStatus phase={phase} drawingId={drawingId} />
 
       <section
-        className="grid grid-cols-3 gap-2 sm:gap-3"
+        className="grid grid-cols-2 gap-2 sm:gap-3"
         aria-label="This round stats"
       >
         <Stat label="Tickets sold" value={ticketsSold?.toLocaleString()} />
         <Stat label="Players" value={uniquePlayers?.toLocaleString()} />
-        <Stat
-          label="LP yield"
-          value={lpEarnings !== undefined ? <UsdcAmount value={lpEarnings} precision={0} unit={false} /> : undefined}
-        />
       </section>
 
       <div className="grid gap-4 md:grid-cols-3">

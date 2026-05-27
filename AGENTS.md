@@ -11,6 +11,23 @@ division, polling cadence, decisions), use
 [`docs/ARCHITECTURE.md`](./docs/ARCHITECTURE.md). If you want the rebrand
 checklist, use [`docs/CUSTOMIZE.md`](./docs/CUSTOMIZE.md).
 
+## Branches
+
+Two long-lived branches, kept at **feature parity except for on-chain writes
+and wallet connection**:
+
+- **`main`** — the public fork/clone branch; the general-use white-label kit.
+- **`demo`** — deployed to demo.megapot.io. A **read-only showcase**: every
+  on-chain *write* is disabled (ticket buys, win/referral claims, LP
+  deposit/withdraw) via a custom wagmi connector
+  (`src/config/demoConnector.ts` → `DEMO_MODE`; the connector throws on write
+  RPCs). A single showcase wallet auto-connects (`VITE_DEMO_ADDRESS`, with a
+  baked-in default). `LP_ENABLED` is `true` here (vs. `false` on `main`).
+
+**Parity rule:** every general change lands on `main` first, then ports to
+`demo` (merge `main` → `demo`). Demo-only changes — the read-only showcase, the
+demo wallet, write-disabling — live only on `demo`.
+
 ## The convention
 
 ```
