@@ -16,10 +16,10 @@
  * ---
  */
 import { useAccount } from 'wagmi';
-import { TicketCard } from './TicketCard';
 import type { NavKey } from '@/components/layout/Nav';
 import { useUserTickets } from '@/hooks/useUserTickets';
 import { formatApiError } from '@/lib/api';
+import { TicketCard } from './TicketCard';
 
 export function CurrentDrawingTickets({
   drawingId,

@@ -14,12 +14,13 @@
  *             for staleTime to expire.
  * ---
  */
-import { useMemo } from 'react';
+
 import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import { useMemo } from 'react';
 import { parseAbi } from 'viem';
 import { useWatchContractEvent } from 'wagmi';
 import { JACKPOT_ADDRESS } from '@/config/contracts';
-import { api, API_BASE_URL, apiQueryRetry, QK, type Round } from '@/lib/api';
+import { API_BASE_URL, api, apiQueryRetry, QK, type Round } from '@/lib/api';
 
 const FIVE_MINUTES = 5 * 60 * 1000;
 

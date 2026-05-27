@@ -17,13 +17,13 @@
  */
 import { useAccount } from 'wagmi';
 import type { NavKey } from '@/components/layout/Nav';
-import { COPY } from '@/config/copy';
 import { ActiveSubscription } from '@/components/tickets/ActiveSubscription';
 import { ClaimReferralFees } from '@/components/tickets/ClaimReferralFees';
 import { CurrentDrawingTickets } from '@/components/tickets/CurrentDrawingTickets';
 import { PastRoundTickets } from '@/components/tickets/PastRoundTickets';
 import { UnclaimedWins } from '@/components/tickets/UnclaimedWins';
 import { WalletStatsCard } from '@/components/tickets/WalletStatsCard';
+import { COPY } from '@/config/copy';
 import { useJackpotState } from '@/hooks/useJackpotState';
 
 export function Tickets({ onNavigate }: { onNavigate: (k: NavKey) => void }) {
