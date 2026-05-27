@@ -44,10 +44,10 @@ export function Home({ onNavigate }: { onNavigate: (k: NavKey) => void }) {
   const tiersFootnote =
     referralPct !== undefined ? (
       <>
-        Shown after the protocol's{' '}
-        <span className="font-medium">{referralPct.toFixed(1)}%</span> referral share is
-        deducted — what a winner actually receives. Raw contract values are higher by this
-        share; see{' '}
+        Net of the{' '}
+        <span className="font-medium">{referralPct.toFixed(1)}%</span> referral fee paid to
+        the referring app — what a winner actually receives. Gross contract values are higher
+        by this share; see{' '}
         <a
           href="https://llms.megapot.io/tasks/claim-referral-fees"
           target="_blank"
