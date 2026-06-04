@@ -24,12 +24,13 @@ import {
   BATCH_PURCHASE_FACILITATOR_ADDRESS,
   REFERRAL_SPLIT_FULL,
   REFERRER_ADDRESS,
+  TICKET_SOURCE,
 } from '@/config/contracts';
 import { API_BASE_URL, QK } from '@/lib/api';
 import type { CustomTicket } from '@/lib/tickets';
 
 const abi = parseAbi([
-  'function createBatchOrder(address _recipient, uint64 _dynamicTicketCount, (uint8[] normals, uint8 bonusball)[] _userStaticTickets, address[] _referrers, uint256[] _referralSplit)',
+  'function createBatchOrder(address _recipient, uint64 _dynamicTicketCount, (uint8[] normals, uint8 bonusball)[] _userStaticTickets, address[] _referrers, uint256[] _referralSplit, bytes32 _source)',
   'function cancelBatchOrder()',
   'function getBatchOrderInfo(address _recipient) view returns ((uint256 orderDrawingId, uint64 remainingUSDC, uint64 remainingTickets, uint64 totalTicketsOrdered, uint64 dynamicTicketCount, address[] referrers, uint256[] referralSplit) batchOrder, (uint8[] normals, uint8 bonusball)[] staticTickets)',
   'event BatchOrderExecuted(address indexed user, uint256 indexed drawingId, uint256[] ticketIds, uint256 ticketsExecuted, uint256 remainingTickets, uint256 remainingUSDC)',
@@ -123,6 +124,7 @@ export function useBulkPurchase() {
         args.staticTickets.map((t) => ({ normals: t.normals, bonusball: t.bonusball })),
         [REFERRER_ADDRESS],
         [...REFERRAL_SPLIT_FULL],
+        TICKET_SOURCE,
       ],
     });
   };
