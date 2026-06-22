@@ -51,9 +51,9 @@ export const USDC_DECIMALS = 6;
 export const BONUSBALL_MIN = 1;
 
 /**
- * `bytes32` source identifier passed to `Jackpot.buyTickets` for analytics
- * attribution. Replace with your app identifier to filter your purchases out
- * of on-chain analytics.
+ * `bytes32` source identifier passed to ticket purchase calls (direct buys,
+ * batch orders, and subscriptions) for analytics attribution. Replace with
+ * your app identifier to filter your purchases out of on-chain analytics.
  *
  * Computed from a UTF-8 string padded to 32 bytes via `viem.stringToHex`.
  */
@@ -111,12 +111,12 @@ const ADDRESSES = {
     testnet: '0x45084829ac63f9dC6a3D4981A46FA896f9180ECd',
   },
   BatchPurchaseFacilitator: {
-    mainnet: '0x01774B531591b286b9f02C6Bc02ab3fD9526Aa76',
-    testnet: '0xe582dD908Ca5bd51C743DFdda37C93bBaCD27c56',
+    mainnet: '0xBA343479D98a1Ed333899999D95a7343B808a76F',
+    testnet: '0x62A5D60F486D01a28071652a7951Aff1EA4c5b7c',
   },
   JackpotAutoSubscription: {
-    mainnet: '0x02A58B725116BA687D9356Eafe0fA771d58a37ac',
-    testnet: '0x054a61E2FC77BAb3c9D94C3f835FB7ADE97a2F90',
+    mainnet: '0x2694Bd48f3e6B4775943067DC842C93bf5F19DcD',
+    testnet: '0x6d589a1C65A937c25DA3F402C69F7C5d4FcbF053',
   },
   JackpotLPManager: {
     mainnet: '0xE63E54DF82d894396B885CE498F828f2454d9dCf',
