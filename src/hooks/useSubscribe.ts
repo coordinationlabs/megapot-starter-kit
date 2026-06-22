@@ -16,11 +16,12 @@ import {
   JACKPOT_AUTO_SUBSCRIPTION_ADDRESS,
   REFERRAL_SPLIT_FULL,
   REFERRER_ADDRESS,
+  TICKET_SOURCE,
 } from '@/config/contracts';
 import type { CustomTicket } from '@/lib/tickets';
 
 const abi = parseAbi([
-  'function createSubscription(address _recipient, uint64 _totalDays, uint64 _dynamicTicketCount, (uint8[] normals, uint8 bonusball)[] _userStaticTickets, address[] _referrers, uint256[] _referralSplit)',
+  'function createSubscription(address _recipient, uint64 _totalDays, uint64 _dynamicTicketCount, (uint8[] normals, uint8 bonusball)[] _userStaticTickets, address[] _referrers, uint256[] _referralSplit, bytes32 _source)',
   'function cancelSubscription()',
   'function getSubscriptionInfo(address _recipient) view returns ((uint64 remainingUSDC, uint64 lastExecutedDrawing, uint64 subscribedTicketPrice, uint64 dynamicTicketCount, address[] referrers, uint256[] referralSplit) subscription, (uint8[] normals, uint8 bonusball)[] staticTickets)',
 ]);
@@ -75,6 +76,7 @@ export function useSubscribe() {
         args.staticTickets.map((t) => ({ normals: t.normals, bonusball: t.bonusball })),
         [REFERRER_ADDRESS],
         [...REFERRAL_SPLIT_FULL],
+        TICKET_SOURCE,
       ],
     });
   };
